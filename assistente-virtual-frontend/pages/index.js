@@ -10,6 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -67,9 +68,12 @@ export default function Home() {
                     </div>
                     <div className={styles.firstSection}>
                         <Container>
-                            <Row>
-                                <Col>
-                                    <FontAwesomeIcon icon="fa-light fa-coins" />
+                            <Row className={styles.rowContent}>
+                                <Col className={styles.iconCol}>
+                                    <FontAwesomeIcon icon={faCoins} size="6x" />
+                                </Col>
+                                <Col className={styles.textCol}>
+                                    <section>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet ipsum id augue sagittis mattis non at ligula. Quisque consectetur aliquet egestas. Quisque neque dolor, rutrum faucibus justo vehicula, pellentesque imperdiet dui. Aenean ac urna lorem. Proin luctus nulla non eros varius faucibus. Aliquam erat volutpat. Nullam in sagittis mi. Maecenas ut mattis ex. Proin ac commodo sapien. Curabitur ac magna interdum, tincidunt turpis at, efficitur nisi.</section>
                                 </Col>
                             </Row>
                         </Container>
