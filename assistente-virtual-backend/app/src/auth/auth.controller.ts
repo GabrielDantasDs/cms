@@ -8,7 +8,7 @@ import { AuthRequest } from './models/AuthRequest';
 export class AuthController {
     constructor(private readonly authService: AuthService) {}
 
-    @IsPublic()
+    @IsPublic( )
     @Post('login')
     @HttpCode(HttpStatus.OK)
     @UseGuards(LocalAuthGuard)
