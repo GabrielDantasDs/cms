@@ -13,7 +13,7 @@ import { CChartBar, CChartLine } from '@coreui/react-chartjs'
 import CIcon from '@coreui/icons-react'
 import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
 
-const WidgetsDropdown = () => {
+const WidgetsDropdown = (props) => {
   return (
     <CRow>
       <CCol sm={6} lg={3}>
@@ -22,7 +22,7 @@ const WidgetsDropdown = () => {
           color="primary"
           value={
             <>
-              26K{' '}
+              {props.users}
               <span className="fs-6 fw-normal">
                 (-12.4% <CIcon icon={cilArrowBottom} />)
               </span>

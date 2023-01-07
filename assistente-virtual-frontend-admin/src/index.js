@@ -2,6 +2,9 @@ import 'react-app-polyfill/stable'
 import 'core-js'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";     
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'

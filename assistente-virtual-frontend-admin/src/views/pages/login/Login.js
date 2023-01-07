@@ -1,5 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route, useNavigate } from 'react-router-dom'
+import validate from './LoginUtils'
+import { useState, useHis } from 'react'
+import { login } from 'src/cruds/auth'
 import {
   CButton,
   CCard,
@@ -15,8 +18,41 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import { useFormik } from 'formik'
+import ErrorMessage from 'src/views/components/login/ErrorMessage'
+import Swal from 'sweetalert2'
 
-const Login = () => {
+function Login() {
+  const [validated, setValidated] = useState(false)
+  const [error, setError] = useState(null)
+  const navigate = useNavigate()
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    onSubmit: (values) => {
+      setValidated(true)
+      login(values)
+        .then((res) => {
+          localStorage.setItem('access_token', res.data.access_token)
+          navigate('/dashboard')
+        })
+        .catch((error) => {
+          if (error.response.data.statusCode == 400) {
+            setError('Formato do email ou senha inválido.')
+          }
+
+          if (error.response.data.statusCode == 401) {
+            setError('Credenciais inválidas.')
+          }
+
+          return
+        })
+    },
+  })
+  
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -25,14 +61,28 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm>
+                  <CForm
+                    onSubmit={formik.handleSubmit}
+                    className={'needs-validation'}
+                    noValidate
+                    validated={validated}
+                  >
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
+                    {error && <ErrorMessage error={error}></ErrorMessage>}
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" />
+                      <CFormInput
+                        placeholder="Username"
+                        autoComplete="username"
+                        name="email"
+                        onChange={formik.handleChange}
+                        value={formik.values.email}
+                        required
+                      />
+                      {/* {formik.errors.email ? <div>{formik.errors.email}</div> : null} */}
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -42,11 +92,16 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
+                        name="password"
+                        onChange={formik.handleChange}
+                        value={formik.values.password}
+                        required
                       />
+                      {/* {formik.errors.password ? <div>{formik.errors.password}</div> : null} */}
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton type="submit" color="primary" className="px-4">
                           Login
                         </CButton>
                       </CCol>

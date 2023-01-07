@@ -10719,6 +10719,11 @@
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
 
+"sweetalert2@^11.6.5":
+  "integrity" "sha512-4/2dD+HoGbMnemYJlY/IXhLUgVFVxLgH3dlEDLY1yufOAW9HLEI8VHmgCo4+pmXbUBlKZU/pDbSgw3wkysi8jQ=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.6.5.tgz"
+  "version" "11.6.5"
+
 "symbol-tree@^3.2.4":
   "integrity" "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw=="
   "resolved" "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz"

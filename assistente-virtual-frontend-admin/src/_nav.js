@@ -9,6 +9,7 @@ import {
   cilDrop,
   cilNotes,
   cilPencil,
+  cilPeople,
   cilPuzzle,
   cilSpeedometer,
   cilStar,
@@ -21,20 +22,12 @@ const _nav = [
     name: 'Dashboard',
     to: '/dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
-  },
-  {
-    component: CNavTitle,
-    name: 'Theme',
   },
   {
     component: CNavItem,
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    name: 'Clientes',
+    to: '/customers',
+    icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
